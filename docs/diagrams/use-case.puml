@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor Клиент
+actor Кассир
+actor "Билет бақылаушысы" as Controller
+actor Әкімші
+actor Менеджер
+actor "Төлем провайдері" as Payment
+
+rectangle "Кинотеатр ақпараттық жүйесі" {
+  usecase "Онлайн билет сатып алу" as UC1
+  usecase "Кассада билет сату" as UC2
+  usecase "QR-билетті тексеру" as UC3
+  usecase "Сеанстарды басқару" as UC4
+  usecase "Сатылым есебін алу" as UC5
+}
+
+Клиент --> UC1
+Payment --> UC1
+Кассир --> UC2
+Controller --> UC3
+Әкімші --> UC4
+Менеджер --> UC5
+@enduml
