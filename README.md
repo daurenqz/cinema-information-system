@@ -48,6 +48,17 @@ cinema-information-system/
         └── class-diagram.puml
 ```
 
+## Диаграммалар
+
+GitHub-та бірден көрінетін SVG диаграммалар:
+
+- [Use Case Diagram](docs/diagrams/use-case.svg)
+- [Sequence Diagram](docs/diagrams/sequence.svg)
+- [Class Diagram](docs/diagrams/class-diagram.svg)
+- [Activity Diagram](docs/diagrams/activity.svg)
+
+PlantUML бастапқы коды да сақталған: [use-case.puml](docs/diagrams/use-case.puml).
+
 ## Git/GitHub
 
 Жоба нұсқаларын басқару үшін Git және GitHub қолданылады. Жұмыс барысында commit, branch, Pull Request, merge және Issues пайдаланылады.
