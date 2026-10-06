@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1180" viewBox="0 0 1700 1180">
+  <defs>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#111827}
+      .subtitle{font:18px Arial,sans-serif;fill:#4b5563}
+      .classbox{fill:#ffffff;stroke:#111827;stroke-width:2.4;rx:12}
+      .chead{fill:#eff6ff;stroke:#111827;stroke-width:2.4}
+      .name{font:700 20px Arial,sans-serif;fill:#111827;text-anchor:middle}
+      .txt{font:16px Arial,sans-serif;fill:#111827}
+      .small{font:14px Arial,sans-serif;fill:#4b5563}
+      .rel{stroke:#374151;stroke-width:2.2;fill:none}
+      .dep{stroke:#2563eb;stroke-width:2;stroke-dasharray:8 7;fill:none;marker-end:url(#arr)}
+      .mult{font:15px Arial,sans-serif;fill:#111827}
+      .note{fill:#f9fafb;stroke:#9ca3af;stroke-width:1.4;rx:12}
+    </style>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1700" height="1180" fill="#ffffff"/>
+  <text x="850" y="55" class="title" text-anchor="middle">Class Diagram — Кинотеатрдың ақпараттық жүйесі</text>
+  <text x="850" y="88" class="subtitle" text-anchor="middle">Негізгі домендік объектілер және олардың байланыстары</text>
+
+  <!-- User -->
+  <g transform="translate(90,150)">
+    <rect width="310" height="230" class="classbox"/>
+    <rect width="310" height="48" class="chead"/>
+    <text x="155" y="31" class="name">User</text>
+    <text x="18" y="78" class="txt">- userId: UUID</text>
+    <text x="18" y="104" class="txt">- name: String</text>
+    <text x="18" y="130" class="txt">- email: String</text>
+    <text x="18" y="156" class="txt">- role: String</text>
+    <line x1="0" y1="174" x2="310" y2="174" class="rel"/>
+    <text x="18" y="203" class="txt">+ login()</text>
+  </g>
+
+  <!-- Screening -->
+  <g transform="translate(500,150)">
+    <rect width="330" height="250" class="classbox"/>
+    <rect width="330" height="48" class="chead"/>
+    <text x="165" y="31" class="name">Screening</text>
+    <text x="18" y="78" class="txt">- screeningId: UUID</text>
+    <text x="18" y="104" class="txt">- movieTitle: String</text>
+    <text x="18" y="130" class="txt">- hall: String</text>
+    <text x="18" y="156" class="txt">- startTime: DateTime</text>
+    <text x="18" y="182" class="txt">- price: Decimal</text>
+    <line x1="0" y1="200" x2="330" y2="200" class="rel"/>
+    <text x="18" y="229" class="txt">+ getAvailableSeats()</text>
+  </g>
+
+  <!-- Seat -->
+  <g transform="translate(930,150)">
+    <rect width="280" height="220" class="classbox"/>
+    <rect width="280" height="48" class="chead"/>
+    <text x="140" y="31" class="name">Seat</text>
+    <text x="18" y="78" class="txt">- seatId: UUID</text>
+    <text x="18" y="104" class="txt">- row: String</text>
+    <text x="18" y="130" class="txt">- number: Int</text>
+    <line x1="0" y1="148" x2="280" y2="148" class="rel"/>
+    <text x="18" y="177" class="txt">+ isAvailable()</text>
+  </g>
+
+  <!-- PaymentGateway -->
+  <g transform="translate(1300,150)">
+    <rect width="310" height="220" class="classbox"/>
+    <rect width="310" height="48" class="chead"/>
+    <text x="155" y="31" class="name">PaymentGateway</text>
+    <text x="18" y="78" class="txt">- providerName: String</text>
+    <line x1="0" y1="96" x2="310" y2="96" class="rel"/>
+    <text x="18" y="126" class="txt">+ pay(orderId, amount)</text>
+    <text x="18" y="152" class="txt">+ getStatus(paymentId)</text>
+    <text x="18" y="178" class="txt">+ refund(paymentId)</text>
+  </g>
+
+  <!-- Order -->
+  <g transform="translate(450,520)">
+    <rect width="430" height="360" class="classbox"/>
+    <rect width="430" height="48" class="chead"/>
+    <text x="215" y="31" class="name">Order</text>
+    <text x="18" y="78" class="txt">- orderId: UUID</text>
+    <text x="18" y="104" class="txt">- status: OrderStatus</text>
+    <text x="18" y="130" class="txt">- holdUntil: DateTime</text>
+    <text x="18" y="156" class="txt">- amount: Decimal</text>
+    <line x1="0" y1="174" x2="430" y2="174" class="rel"/>
+    <text x="18" y="204" class="txt">+ hold()</text>
+    <text x="18" y="230" class="txt">+ confirmPayment()</text>
+    <text x="18" y="256" class="txt">+ expire()</text>
+    <text x="18" y="282" class="txt">+ cancel()</text>
+    <text x="18" y="322" class="small">OrderStatus: HELD, PAID, EXPIRED, CANCELLED</text>
+  </g>
+
+  <!-- Payment -->
+  <g transform="translate(1010,520)">
+    <rect width="360" height="300" class="classbox"/>
+    <rect width="360" height="48" class="chead"/>
+    <text x="180" y="31" class="name">Payment</text>
+    <text x="18" y="78" class="txt">- paymentId: UUID</text>
+    <text x="18" y="104" class="txt">- amount: Decimal</text>
+    <text x="18" y="130" class="txt">- status: PaymentStatus</text>
+    <line x1="0" y1="148" x2="360" y2="148" class="rel"/>
+    <text x="18" y="178" class="txt">+ markSuccess()</text>
+    <text x="18" y="204" class="txt">+ markFailed()</text>
+    <text x="18" y="244" class="small">PaymentStatus:</text>
+    <text x="18" y="267" class="small">PENDING, SUCCESS, FAILED, REFUNDED</text>
+  </g>
+
+  <!-- Ticket -->
+  <g transform="translate(1010,900)">
+    <rect width="360" height="230" class="classbox"/>
+    <rect width="360" height="48" class="chead"/>
+    <text x="180" y="31" class="name">Ticket</text>
+    <text x="18" y="78" class="txt">- ticketId: UUID</text>
+    <text x="18" y="104" class="txt">- qrToken: String</text>
+    <text x="18" y="130" class="txt">- used: Boolean</text>
+    <line x1="0" y1="148" x2="360" y2="148" class="rel"/>
+    <text x="18" y="178" class="txt">+ validate()</text>
+    <text x="18" y="204" class="txt">+ markUsed()</text>
+  </g>
+
+  <!-- BookingService -->
+  <g transform="translate(90,560)">
+    <rect width="300" height="270" class="classbox"/>
+    <rect width="300" height="48" class="chead"/>
+    <text x="150" y="31" class="name">BookingService</text>
+    <text x="18" y="78" class="txt">+ createOrder()</text>
+    <text x="18" y="104" class="txt">+ startPayment()</text>
+    <text x="18" y="130" class="txt">+ processPaymentResult()</text>
+    <text x="18" y="156" class="txt">+ issueTicket()</text>
+    <text x="18" y="182" class="txt">+ expireHold()</text>
+  </g>
+
+  <!-- Relations -->
+  <line x1="400" y1="270" x2="450" y2="640" class="rel"/>
+  <text x="405" y="335" class="mult">1</text>
+  <text x="438" y="610" class="mult">0..*</text>
+
+  <line x1="665" y1="400" x2="665" y2="520" class="rel"/>
+  <text x="675" y="430" class="mult">1</text>
+  <text x="675" y="505" class="mult">0..*</text>
+
+  <line x1="1070" y1="370" x2="820" y2="560" class="rel"/>
+  <text x="1055" y="392" class="mult">1</text>
+  <text x="840" y="548" class="mult">0..*</text>
+
+  <line x1="880" y1="690" x2="1010" y2="650" class="rel"/>
+  <text x="890" y="676" class="mult">1</text>
+  <text x="980" y="646" class="mult">0..*</text>
+
+  <line x1="800" y1="880" x2="1040" y2="900" class="rel"/>
+  <text x="810" y="870" class="mult">1</text>
+  <text x="1000" y="900" class="mult">0..1</text>
+
+  <line x1="390" y1="690" x2="450" y2="690" class="dep"/>
+  <line x1="390" y1="620" x2="1300" y2="300" class="dep"/>
+
+  <!-- Notes -->
+  <rect x="90" y="930" width="760" height="150" class="note"/>
+  <text x="115" y="962" class="txt">Маңызды шектеу</text>
+  <text x="115" y="992" class="small">• Бір Screening + Seat жұбы үшін бір мезгілде ең көбі бір белсенді бронь немесе сатылған тапсырыс.</text>
+  <text x="115" y="1018" class="small">• Order → Ticket: төлемге дейін билет жоқ; сәтті төлемнен кейін бір ғана билет.</text>
+  <text x="115" y="1044" class="small">• Қайталанған paymentId екінші билет жасамауы тиіс.</text>
+
+  <text x="850" y="1160" class="subtitle" text-anchor="middle">Класстар 4-зертханалық жұмыстағы UC-01 «Онлайн билет сатып алу» сценарийімен сәйкестендірілген</text>
+</svg>
